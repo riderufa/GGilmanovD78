@@ -1,0 +1,23 @@
+{% extends 'base_p_library.html' %}
+
+{% block title %}
+Create multiple Authors and Books
+{% endblock %}  
+
+{% block content %}
+<form method="post">  
+  {{ author_formset.management_form }}
+  {{ book_formset.management_form }}
+  {% csrf_token %}  
+  {% for form in author_formset %}  
+        {{ form.as_ul }}  
+        <br>  
+  {% endfor %}  
+  
+    {% for form in book_formset %}  
+        {{ form.as_ul }}  
+        <br>  
+  {% endfor %}  
+    <input type="submit" value="Сохранить"/>  
+</form>  
+{% endblock %}

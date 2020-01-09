@@ -1,0 +1,13 @@
+{% extends 'base_p_library.html' %}
+
+{% block title %}
+Список друзей
+{% endblock %}
+
+{% block content %}
+<ul class="list-group">
+	{% for friend in object_list %}
+	<li class="list-group-item">{{ friend.full_name }}</li>
+	{% endfor %}
+</ul>
+{% endblock %}

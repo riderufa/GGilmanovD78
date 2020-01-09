@@ -1,0 +1,43 @@
+
+{% extends 'base_p_library.html' %}
+
+{% block title %}
+Главная страница
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-striped mt-5" border="1">
+                {% for book in books|dictsort:"publishing.publishing_name" %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ book.title }}</td>
+                    <td><img src="{% if book.avatar %} {{ book.avatar.url }} {% endif %}" alt=""></td>
+                    <td>{{ book.ISBN }}</td>
+                    <td>{{ book.description }}</td>
+                    <td>{{ book.year_release }}</td>
+                    <td>{{ book.publishing.publishing_name }}</td>
+                    <td>{{ book.author.full_name }}</td>
+                    <td>{{ book.author.country }}</td>
+                    <td>{{ book.copy_count }}</td>
+                    <td>
+                        <form class="mb-1" action="/index/book_increment/" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <input type="hidden" name="id" value="{{book.id}}" />
+                            <input type="submit" class="btn btn-success btn-sm" value="Увеличить кол-во" />
+                        </form>
+                        <form action="/index/book_decrement/" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <input type="hidden" name="id" value="{{book.id}}" />
+                            <input type="submit" class="btn btn-danger btn-sm" value="Уменьшить кол-во" />
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

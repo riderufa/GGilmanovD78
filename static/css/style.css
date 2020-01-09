@@ -1,0 +1,23 @@
+.list-authors {
+    color: red;
+}
+
+.admin-panel {
+    border: 1px solid #999;
+    border-radius: 2px;
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    opacity: 0.3;
+    padding: 15px;
+}
+
+.admin-panel a {
+    display: block;
+    margin: 5px 0;
+}
+
+.admin-panel:hover {
+    opacity: 1;
+}
+

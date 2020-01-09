@@ -1,0 +1,14 @@
+{% extends 'base_p_library.html' %}
+
+{% block title %}
+Список арендованных книг
+{% endblock %}
+
+{% block content %}
+<h1>{{ friend.full_name }} арендовал следующие книги:</h1>
+<ul class="list-group">
+	{% for book in friend.books.all %}
+	<li class="list-group-item">{{ book.title }}</li>
+	{% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,139 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <title>
+    {% block title %}
+
+    {% endblock %}
+  </title>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'p_library:index' %}">Библиотека</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+            aria-expanded="false">Авторы</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{% url 'p_library:author_list' %}">Список авторов</a>
+            <a class="dropdown-item" href="{% url 'p_library:author_create' %}">Создать нового автора</a>
+            <a class="dropdown-item" href="{% url 'p_library:author_create_many' %}">Создать несколько авторов</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+            aria-expanded="false">Друзья</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{% url 'p_library:friend_list' %}">Список друзей</a>
+            <a class="dropdown-item" href="{% url 'p_library:friend_create' %}">Создать нового друга</a>
+            <a class="dropdown-item" href="#">Арендованные книги</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'p_library:leasing_books' %}">Сдача в аренду</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'p_library:book_create' %}">Добавить книгу</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'p_library:publishing_books' %}">Издательства</a>
+        </li>
+      </ul>
+      <form class="my-2 my-lg-0">
+        {% if username %}  
+        <h6>Привет {{ username }}! </h6>  
+        <!-- <p>Тут ты можешь <a href="logout">выйти</a>.</p>   -->
+        <a class="btn btn-success" href="/logout">Выйти</a>
+        {% else %}  
+        <a class="btn btn-success" href="/accounts/github/login/?process=login">Войти с GitHab</a>
+        <!-- <p>Тебе нужно <a href="register">зарегистрироваться</a> или <a href="login">войти на сайт</a>!</p>   -->
+        {% endif %}
+        
+      </form>
+    </div>
+  </nav>
+
+  <!-- <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" href="{% url 'p_library:index' %}">Библиотека</a>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+        aria-expanded="false">Авторы</a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="{% url 'p_library:author_list' %}">Список авторов</a>
+        <a class="dropdown-item" href="{% url 'p_library:author_create' %}">Создать нового автора</a>
+        <a class="dropdown-item" href="{% url 'p_library:author_create_many' %}">Создать несколько авторов</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Separated link</a>
+      </div>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+        aria-expanded="false">Друзья</a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="{% url 'p_library:friend_list' %}">Список друзей</a>
+        <a class="dropdown-item" href="{% url 'p_library:friend_create' %}">Создать нового друга</a>
+        <a class="dropdown-item" href="#">Арендованные книги</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Separated link</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'p_library:leasing_books' %}">Сдача в аренду</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'p_library:book_create' %}">Добавить книгу</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'p_library:publishing_books' %}">Издательства</a>
+    </li>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </ul> -->
+
+
+  {% block content %}
+  <p>kjhgkjhgfjhgfjhgf</p>
+  {% endblock %}
+
+
+  <div class="admin-panel align-items-center">
+    <a href="/admin" class="btn btn-outline-info">Admin</a>
+
+    {% block admin-panel %}
+
+    {% endblock %}
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

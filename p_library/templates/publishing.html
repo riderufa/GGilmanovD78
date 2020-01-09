@@ -1,0 +1,20 @@
+{% extends 'base_p_library.html' %}
+
+{% block content %}
+<div class="container">
+        <div class="row">
+            <div class="col-12 my-5">    
+                {% for publishing in publishings %}
+                <h2>Книги издательства: {{ publishing.publishing_name }}</h2>
+                <ul class="list-group">
+                    {% for book in books %}
+                        {% if book.publishing.publishing_name == publishing.publishing_name %}
+                            <li class="list-group-item list-group-item-primary">{{ book.title }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+                {% endfor %}
+            </div>
+        </div>  
+    </div>
+{% endblock %}

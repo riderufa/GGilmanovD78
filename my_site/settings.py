@@ -38,6 +38,8 @@ ALLOWED_HOSTS = ['lit-sierra-67523.herokuapp.com']
 
 SITE_ID = 1
 
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = https
+
 # Application definition
 
 INSTALLED_APPS = [

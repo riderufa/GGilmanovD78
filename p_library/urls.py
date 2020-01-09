@@ -14,7 +14,7 @@ from allauth.account.views import login, logout
 app_name = 'p_library'
 urlpatterns = [
     path('', index, name='index'),
-    path('index/', index_books, name='index_books'),
+    # path('index/', index_books, name='index_books'),
     path('login/', login, name='login'),  
     path('logout/', logout, name='logout'),
     path('register/', RegisterView.as_view(template_name='register.html', success_url=reverse_lazy('p_library:profile-create')), name='register'),  

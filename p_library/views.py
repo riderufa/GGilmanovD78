@@ -55,14 +55,14 @@ def books_list(request):
     books = Book.objects.all()
     return HttpResponse(books)
 
-def index_books(request):
-    template = loader.get_template('index.html')
-    books = Book.objects.all()
-    biblio_data = {
-        "title": "мою библиотеку",
-        "books": books,
-    }
-    return HttpResponse(template.render(biblio_data, request))
+# def index_books(request):
+#     template = loader.get_template('index.html')
+#     books = Book.objects.all()
+#     biblio_data = {
+#         "title": "мою библиотеку",
+#         "books": books,
+#     }
+#     return HttpResponse(template.render(biblio_data, request))
 
 def index(request):  
     context = {}  
